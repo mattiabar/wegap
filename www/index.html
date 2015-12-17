@@ -45,13 +45,20 @@
     <body>
         <div data-role="page">
             <div data-role="header">
-                <h1>WEGAP!!</h1>
+                <h1>WEGAP</h1>
             </div>
             <div data-role="content">
-                <p>Inserisci il codice:</p>
-                <input id="code" type="number"/>
+                <h1>Accreditamento</h1>
+                <p>Inserisci il codice piattaforma:</p>
+                <input id="platform_code" type="text"/>
                 <br/><br/>
-                <button id="send">INVIA</button>
+                <p>Inserisci il codice utente:</p>
+                <input id="user_id" type="text"/>
+                <br/><br/>
+                <p>Inserisci il codice OTP:</p>
+                <input id="otp_accred" type="text"/>
+                <br/><br/>
+                <button id="send_accred">INVIA</button>
                 <p id="resp"></p>
             </div>
         </div>

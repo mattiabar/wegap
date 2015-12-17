@@ -33,14 +33,26 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+        //$('#resp').html(device.uuid);
         //app.receivedEvent('deviceready');
-        $("#send").on('click', function() {
-            $.post( "https://136.243.70.79:4568/test", { p1: "Mario"})
+        $("#send_accred").on('click', function() {
+            var platform_code = $("#platform_code").value;
+            var user_id = $("#user_id").value;
+            var otp = $("#otp_accred").value;
+            $.post( "http://136.243.70.79:4567/first_accredit", 
+                { 
+                    platform_code: platform_code,
+                    userid: user_id,
+                    otp: otp,
+                    device_id: 'ABCD'//device.uuid
+                })
                 .done(function( data ) {
                     alert( "Data Loaded: " + data );
+                    $('#resp').html(data.message);
                 })
                 .fail(function( data ) {
                     alert("error");
+                    $('#resp').html(data.message);
                 });
         });
     },
