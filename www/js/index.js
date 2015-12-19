@@ -33,13 +33,31 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+        document.addEventListener("backbutton", onBackKeyDown, false); //Listen to the User clicking on the back button
+
+        function onBackKeyDown(e) {
+            e.preventDefault();
+            navigator.notification.confirm("Sei sicuro di voler uscire?", onConfirm, "Confirmation", "Yes,No"); 
+            // Prompt the user with the choice
+        }
+
+        function onConfirm(button) {
+            if(button==2){//If User selected No, then we just do nothing
+                return;
+            }else{
+                navigator.app.exitApp();// Otherwise we quit the app.
+            }
+        }
+
         $(window).on('resize orientationChange', function(event) {
             var h = $( window ).height();
             $('#top').css('height', h*0.20);
             $('#footer1').css('top',h-43);
+            $('#footer2').css('top',h-43);
         });
 
         $('#i0').focus();
+        $('#i0').click();
 
         $('.digitinput').on('focus', function() {
             $(this).select();
@@ -62,6 +80,7 @@ var app = {
                 var nextid_base = curr_id.substring(0,1);
                 var next_id = ""+nextid_base+(parseInt(curr_id.substring(1,2))+1).toString();
                 $( "#"+next_id ).focus();
+                $( "#"+next_id ).trigger('click');
             }
         });
         //$('#resp').html(device.uuid);
@@ -69,6 +88,7 @@ var app = {
         var h = $( window ).height();
         $('#top').css('height', h*0.20);
         $('#footer1').css('top',h-43);
+        $('#footer2').css('top',h-43);
 
         $("#send_accred").on('click', function() {
             var platform_code = $("#platform_code").val();
