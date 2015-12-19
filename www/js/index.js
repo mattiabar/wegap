@@ -33,8 +33,43 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+        $(window).on('resize orientationChange', function(event) {
+            var h = $( window ).height();
+            $('#top').css('height', h*0.20);
+            $('#footer1').css('top',h-43);
+        });
+
+        $('#i0').focus();
+
+        $('.digitinput').on('focus', function() {
+            $(this).select();
+        });
+
+        $('.sendbtn').on('click', function() {
+            $('#i0').focus();
+            $('#i0').val("");
+            $('#i1').val("");
+            $('#i2').val("");
+            $('#i3').val("");
+            $('#i4').val("");
+        });
+
+        $('.digitinput').on('keyup', function() {
+            var curr_id = $(this).attr('id');
+            if (curr_id == 'i4') {
+                $('.sendbtn').focus();
+            } else {
+                var nextid_base = curr_id.substring(0,1);
+                var next_id = ""+nextid_base+(parseInt(curr_id.substring(1,2))+1).toString();
+                $( "#"+next_id ).focus();
+            }
+        });
         //$('#resp').html(device.uuid);
         //app.receivedEvent('deviceready');
+        var h = $( window ).height();
+        $('#top').css('height', h*0.20);
+        $('#footer1').css('top',h-43);
+
         $("#send_accred").on('click', function() {
             var platform_code = $("#platform_code").val();
             var user_id = $("#user_id").val();
