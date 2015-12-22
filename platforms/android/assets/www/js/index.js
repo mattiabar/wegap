@@ -65,7 +65,7 @@ var app = {
 
         $('.sendbtn').on('click', function() {
             var local_pin = $('#i0').val()+$('#i1').val()+$('#i2').val()+$('#i3').val()+$('#i4').val();
-            $.post( "http://wegapws.videoformazioneonline.it:4567/send_pin", 
+            $.post( "https://wegapws.videoformazioneonline.it:4568/send_pin", 
             //$.get( "https://www.google.com/", 
                 { 
                     pin: local_pin,
@@ -73,12 +73,12 @@ var app = {
                 })
                 .done(function( data ) {
                     /* if data json = 'ok'....*/
-                    alert( "Codice corretto: " + data );
-                    $('#resp').html(data.message);
+                    alert( "Codice corretto: " + data.status );
+                    $('#resp').html(data.status);
                 })
                 .fail(function( data ) {
                     alert("error");
-                    $('#resp').html(data.message);
+                    $('#resp').html(data.status);
                 });
             $('#i0').focus();
             $('#i0').val("");
@@ -86,6 +86,10 @@ var app = {
             $('#i2').val("");
             $('#i3').val("");
             $('#i4').val("");
+        });
+
+        $('.exit').on('click', function() {
+            navigator.app.exitApp();
         });
 
         $('.digitinput').on('keyup', function() {
@@ -110,7 +114,7 @@ var app = {
             var platform_code = $("#platform_code").val();
             var user_id = $("#user_id").val();
             var otp = $("#otp_accred").val();
-            $.post( "http://wegapws.videoformazioneonline.it:4567/first_accredit", 
+            $.post( "https://wegapws.videoformazioneonline.it:4568/first_accredit", 
                 { 
                     platform_code: platform_code,
                     userid: user_id,

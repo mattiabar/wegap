@@ -73,12 +73,12 @@ var app = {
                 })
                 .done(function( data ) {
                     /* if data json = 'ok'....*/
-                    alert( "Codice corretto: " + data );
-                    $('#resp').html(data.message);
+                    alert( "Codice corretto: " + data.status );
+                    $('#resp').html(data.status);
                 })
                 .fail(function( data ) {
                     alert("error");
-                    $('#resp').html(data.message);
+                    $('#resp').html(data.status);
                 });
             $('#i0').focus();
             $('#i0').val("");
