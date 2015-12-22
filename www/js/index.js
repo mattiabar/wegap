@@ -65,7 +65,7 @@ var app = {
 
         $('.sendbtn').on('click', function() {
             var local_pin = $('#i0').val()+$('#i1').val()+$('#i2').val()+$('#i3').val()+$('#i4').val();
-            $.post( "http://wegapws.videoformazioneonline.it:4567/send_pin", 
+            $.post( "https://wegapws.videoformazioneonline.it:4568/send_pin", 
             //$.get( "https://www.google.com/", 
                 { 
                     pin: local_pin,
@@ -110,7 +110,7 @@ var app = {
             var platform_code = $("#platform_code").val();
             var user_id = $("#user_id").val();
             var otp = $("#otp_accred").val();
-            $.post( "http://wegapws.videoformazioneonline.it:4567/first_accredit", 
+            $.post( "https://wegapws.videoformazioneonline.it:4568/first_accredit", 
                 { 
                     platform_code: platform_code,
                     userid: user_id,
