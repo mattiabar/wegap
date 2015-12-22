@@ -64,6 +64,22 @@ var app = {
         });
 
         $('.sendbtn').on('click', function() {
+            var local_pin = $('#i0').val()+$('#i1').val()+$('#i2').val()+$('#i3').val()+$('#i4').val();
+            $.post( "http://wegapws.videoformazioneonline.it:4567/send_pin", 
+            //$.get( "https://www.google.com/", 
+                { 
+                    pin: local_pin,
+                    device_id: device.uuid
+                })
+                .done(function( data ) {
+                    /* if data json = 'ok'....*/
+                    alert( "Codice corretto: " + data );
+                    $('#resp').html(data.message);
+                })
+                .fail(function( data ) {
+                    alert("error");
+                    $('#resp').html(data.message);
+                });
             $('#i0').focus();
             $('#i0').val("");
             $('#i1').val("");
@@ -94,8 +110,7 @@ var app = {
             var platform_code = $("#platform_code").val();
             var user_id = $("#user_id").val();
             var otp = $("#otp_accred").val();
-            alert(platform_code);
-            $.post( "http://136.243.70.79:4567/first_accredit", 
+            $.post( "http://wegapws.videoformazioneonline.it:4567/first_accredit", 
                 { 
                     platform_code: platform_code,
                     userid: user_id,

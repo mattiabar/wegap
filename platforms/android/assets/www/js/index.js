@@ -33,19 +33,53 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+        document.addEventListener("backbutton", onBackKeyDown, false); //Listen to the User clicking on the back button
+
+        function onBackKeyDown(e) {
+            e.preventDefault();
+            navigator.notification.confirm("Sei sicuro di voler uscire?", onConfirm, "Confirmation", "Yes,No"); 
+            // Prompt the user with the choice
+        }
+
+        function onConfirm(button) {
+            if(button==2){//If User selected No, then we just do nothing
+                return;
+            }else{
+                navigator.app.exitApp();// Otherwise we quit the app.
+            }
+        }
+
         $(window).on('resize orientationChange', function(event) {
             var h = $( window ).height();
             $('#top').css('height', h*0.20);
             $('#footer1').css('top',h-43);
+            $('#footer2').css('top',h-43);
         });
 
         $('#i0').focus();
+        $('#i0').click();
 
         $('.digitinput').on('focus', function() {
             $(this).select();
         });
 
         $('.sendbtn').on('click', function() {
+            var local_pin = $('#i0').val()+$('#i1').val()+$('#i2').val()+$('#i3').val()+$('#i4').val();
+            $.post( "http://wegapws.videoformazioneonline.it:4567/send_pin", 
+            //$.get( "https://www.google.com/", 
+                { 
+                    pin: local_pin,
+                    device_id: device.uuid
+                })
+                .done(function( data ) {
+                    /* if data json = 'ok'....*/
+                    alert( "Codice corretto: " + data );
+                    $('#resp').html(data.message);
+                })
+                .fail(function( data ) {
+                    alert("error");
+                    $('#resp').html(data.message);
+                });
             $('#i0').focus();
             $('#i0').val("");
             $('#i1').val("");
@@ -62,6 +96,7 @@ var app = {
                 var nextid_base = curr_id.substring(0,1);
                 var next_id = ""+nextid_base+(parseInt(curr_id.substring(1,2))+1).toString();
                 $( "#"+next_id ).focus();
+                $( "#"+next_id ).trigger('click');
             }
         });
         //$('#resp').html(device.uuid);
@@ -69,13 +104,13 @@ var app = {
         var h = $( window ).height();
         $('#top').css('height', h*0.20);
         $('#footer1').css('top',h-43);
+        $('#footer2').css('top',h-43);
 
         $("#send_accred").on('click', function() {
             var platform_code = $("#platform_code").val();
             var user_id = $("#user_id").val();
             var otp = $("#otp_accred").val();
-            alert(platform_code);
-            $.post( "http://136.243.70.79:4567/first_accredit", 
+            $.post( "http://wegapws.videoformazioneonline.it:4567/first_accredit", 
                 { 
                     platform_code: platform_code,
                     userid: user_id,
