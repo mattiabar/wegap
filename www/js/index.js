@@ -17,6 +17,7 @@
  * under the License.
  */
 var app = {
+
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -33,6 +34,8 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+        var token = "drf2015wegap";
+
         document.addEventListener("backbutton", onBackKeyDown, false); //Listen to the User clicking on the back button
 
         function onBackKeyDown(e) {
@@ -69,16 +72,20 @@ var app = {
             //$.get( "https://www.google.com/", 
                 { 
                     pin: local_pin,
-                    device_id: device.uuid
+                    device_id: device.uuid,
+                    auth_token: token
                 })
                 .done(function( data ) {
-                    /* if data json = 'ok'....*/
-                    alert( "Codice corretto: " + data.status );
-                    $('#resp').html(data.status);
+                    if (data.status == 'ok') {
+                        alert( "Codice corretto: " + data.status );
+                    } else {
+                        alert( "Codice ERRATO o dispositivo NON VALIDO." );
+                    }
+                    //$('#resp').html(data.status);
                 })
                 .fail(function( data ) {
-                    alert("error");
-                    $('#resp').html(data.status);
+                    alert("Errore di connessione.");
+                    //$('#resp').html(data.status);
                 });
             $('#i0').focus();
             $('#i0').val("");
@@ -119,7 +126,8 @@ var app = {
                     platform_code: platform_code,
                     userid: user_id,
                     otp: otp,
-                    device_id: device.uuid
+                    device_id: device.uuid,
+                    auth_token: token
                 })
                 .done(function( data ) {
                     alert( "Data Loaded: " + data );
