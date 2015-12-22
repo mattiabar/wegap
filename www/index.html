@@ -62,7 +62,7 @@
     </head>
     <body>
         <div data-role="page" id="main"> 
-            <div data-role="header">
+            <div data-role="header" data-position="fixed">
                 <h1>WEGAP</h1>
             </div> 
             <div data-role="content">
@@ -78,16 +78,22 @@
                 <a href="#send" class="sendbtn" data-theme="e" data-role="button">INVIA CODICE</a>
 
                 <a href="#accred" data-role="button" style="top:20px;">REGISTRA DISPOSITIVO</a>
-                <a href="#exit" class="exit" data-role="button" style="top:20px;">CHIUDI APPLICAZIONE</a>
+                <div style="height:20px;"></div>
+                
+                <div style="height:53px;"></div>
                 <div id="bottom"></div>
             </div> 
             
-            <div id="footer1" data-role="footer" style="width:100%;position:fixed;">
-                <h1>DELTAERREFORMAZIONE srl</h1>
+            <div id="footer1" data-role="footer" class="ui-bar" data-position="fixed">
+                <!--<h1>DELTAERREFORMAZIONE srl</h1>-->
+                <div data-role="controlgroup" data-type="horizontal" style="margin-top:-2px;">
+                    <a href="#exit" class="exit" data-role="button">CHIUDI APP</a>
+                    <a href="#exit" class="info" data-role="button">INFO</a>
+                </div>
             </div> 
         </div> 
         <div data-role="page" id="accred">
-            <div data-role="header">
+            <div data-role="header" data-position="fixed">
                 <h1>WEGAP - ACCREDITAMENTO</h1>
             </div>
             <div data-role="content">
@@ -102,8 +108,13 @@
                 <p id="resp"></p>
                 <a class='backtomain' href="#main" data-role="button">Torna indietro</a>
             </div>
-            <div id="footer2" data-role="footer" style="width:100%;position:fixed;">
-                <h1>DELTAERREFORMAZIONE srl</h1>
+            <div style="height:53px;"></div>
+            <div id="footer2" data-role="footer" class="ui-bar"  data-position="fixed">
+                <!--<h1>DELTAERREFORMAZIONE srl</h1>-->
+                <div data-role="controlgroup" data-type="horizontal" style="margin-top:-2px;">
+                    <a href="#exit" class="exit" data-role="button">CHIUDI APP</a>
+                    <a href="#exit" class="info" data-role="button">INFO</a>
+                </div>
             </div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>

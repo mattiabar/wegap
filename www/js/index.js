@@ -53,6 +53,7 @@ var app = {
         }
 
         $(window).on('resize orientationChange', function(event) {
+            $('.exit').css('width',$('.sendbtn').width);
             var h = $( window ).height();
             $('#top').css('height', h*0.20);
             $('#footer1').css('top',h-43);
@@ -77,7 +78,7 @@ var app = {
                 })
                 .done(function( data ) {
                     if (data.status == 'ok') {
-                        alert( "Codice corretto: " + data.status );
+                        alert( "Codice CORRETTO." );
                     } else {
                         alert( "Codice ERRATO o dispositivo NON VALIDO." );
                     }
@@ -112,6 +113,7 @@ var app = {
         });
         //$('#resp').html(device.uuid);
         //app.receivedEvent('deviceready');
+        $('.exit').css('width',$('.sendbtn').width);
         var h = $( window ).height();
         $('#top').css('height', h*0.20);
         $('#footer1').css('top',h-43);
