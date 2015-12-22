@@ -88,6 +88,10 @@ var app = {
             $('#i4').val("");
         });
 
+        $('.exit').on('click', function() {
+            navigator.app.exitApp();
+        });
+
         $('.digitinput').on('keyup', function() {
             var curr_id = $(this).attr('id');
             if (curr_id == 'i4') {
