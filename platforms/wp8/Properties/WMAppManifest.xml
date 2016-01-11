@@ -4,7 +4,7 @@
     <Languages xmlns="">
         <Language code="en-US" />
     </Languages>
-    <App Author="PhoneGap Team" BitsPerPixel="32" Description="Hello World sample application that responds to the deviceready event." Genre="apps.normal" ProductID="{cd484d10-a8b6-11e5-a0bc-edd555e9712b}" Publisher="PhoneGap Team" PublisherID="{db093ed5-53b1-45f7-af72-751e8f36ab80}" RuntimeType="Silverlight" Title="WeGap" Version="1.0.0" xmlns="">
+    <App Author="DeltaErreFormazione srl" BitsPerPixel="32" Description="WeGap sample application that responds to the deviceready event." Genre="apps.normal" ProductID="{cd484d10-a8b6-11e5-a0bc-edd555e9712b}" Publisher="DeltaErreFormazione srl" PublisherID="{db093ed5-53b1-45f7-af72-751e8f36ab80}" RuntimeType="Silverlight" Title="WeGap" Version="1.0.0" xmlns="">
         <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
         <Capabilities>
             <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />

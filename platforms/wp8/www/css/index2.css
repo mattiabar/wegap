@@ -1,4 +1,27 @@
 .digitinput{
-    width: 20px;
+    width: 19%;
     text-align: center;
+    float: left;
+    margin-left:1.25%;
+}
+
+.digitinput:first-child{
+	margin-left: 0;
+}
+
+.section_zone{
+	margin: 0 auto;
+    padding: 3px;
+	width: 100%;   
+	position: relative;
+	overflow: auto;
+	/*text-align: center;
+	/display: inline-block;
+	/clear: both;
+    background-color: #fff;
+    border: 1px solid #000;
+    /* change border to be inside the box 
+    //box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;*/
 }

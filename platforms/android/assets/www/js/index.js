@@ -61,7 +61,7 @@ var app = {
         });
 
         $('#i0').focus();
-        $('#i0').click();
+        $('#i0').trigger('click');
 
         $('.digitinput').on('focus', function() {
             $(this).select();
